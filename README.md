@@ -10,8 +10,3 @@ The app must store the following data:
 - The API must be able to show all the deals by that has been produced by the client
 - The API must be able to show all the Clients who bought given PC
 - The API must be able to show the best buyer of the year (who spends the most money)
-
-Please add the README file and show the routes and GET, POST 
-methods - VERY IMPORTANT!!! The routes depend on you.
-
-NO need to create the client part.
