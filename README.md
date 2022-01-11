@@ -1,4 +1,4 @@
-PC_store app
+# PC_store app
 Create RESTful based CRUD app’s API by using Flask, Flask-RESTful, Flask-SQLAlchemy.
 The app must store the following data:
 1) The data about the PC: It’s CPU, RAM, SSD, PC Price
@@ -10,3 +10,19 @@ The app must store the following data:
 - The API must be able to show all the deals by that has been produced by the client
 - The API must be able to show all the Clients who bought given PC
 - The API must be able to show the best buyer of the year (who spends the most money)
+
+## Endpoints
+- GET
+    - /customers/:customer_id
+    - /pcs/:pc_id
+    - /deals/showdeals/:customer_id
+    - /deals/showcustomers/:pc_id
+
+- POST
+    - /customer
+    - /pc
+    - /deal
+
+- DELETE
+    - /customers/:customer_id
+    - /pcs/:pc_id
