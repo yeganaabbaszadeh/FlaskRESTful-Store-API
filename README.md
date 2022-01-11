@@ -1,4 +1,3 @@
-# PC_store app
 
 ## Endpoints
 - GET
