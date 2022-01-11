@@ -66,7 +66,7 @@ class Customer(Resource):
         result = c.fetchall()
         if not result:
             abort(404, message='Could not find the customer with this id')
-        return result
+        return jsonify(result)
 
     
     def delete(self, customer_id):
@@ -96,7 +96,7 @@ class PC(Resource):
         result = c.fetchall()
         if not result:
             abort(404, message='Could not find the PC with this id')
-        return result
+        return jsonify(result)
 
     def delete(self, pc_id):
         c.execute("SELECT 1 FROM pc WHERE id = ?", (pc_id, ))
@@ -124,7 +124,7 @@ class ShowDealsByCustomer(Resource):
         result = c.fetchall()
         if not result:
             abort(404, message='No deals')
-        return result
+        return jsonify(result)
 
 
 class ShowDealsByPC(Resource):
@@ -133,7 +133,21 @@ class ShowDealsByPC(Resource):
         result = c.fetchall()
         if not result:
             abort(404, message='No deals')
-        return result
+        return jsonify(result)
+
+
+class BestBuyer(Resource):
+    def get(self):
+        c.execute("""SELECT customer.name, SUM(pc.price) AS 'Price'
+        FROM customer, pc, deal
+        WHERE customer.id = deal.customer_id
+        AND pc.id = deal.pc_id
+        GROUP BY customer.id
+        ORDER BY 'Price' ASC""")
+        result = c.fetchall()
+        if not result:
+            abort(404, message='No best buyer')
+        return jsonify(result[0])
 
 
 api.add_resource(AddCustomer, "/customer")
@@ -143,6 +157,7 @@ api.add_resource(PC, "/pcs/<int:pc_id>")
 api.add_resource(AddDeal, "/deal")
 api.add_resource(ShowDealsByCustomer, "/deals/showdeals/<int:customer_id>")
 api.add_resource(ShowDealsByPC, "/deals/showcustomers/<int:pc_id>")
+api.add_resource(BestBuyer, "/bestbuyer")
 
 
 if __name__ == "__main__":
