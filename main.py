@@ -75,6 +75,7 @@ class Customer(Resource):
         if not result:
             abort(404, message='Could not find the customer with this id, cannot delete')
         c.execute("DELETE FROM customer WHERE id = ?", (customer_id, ))
+        conn.commit()
         return {"message": "Customer deleted"}
 
 

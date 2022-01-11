@@ -28,6 +28,9 @@ BASE = "http://127.0.0.1:5000/"
 # print(response.json())
 # input()
 
+# response = requests.delete(BASE + "customers/3")
+# print(response.json())
+# input()
 
 # response = requests.post(BASE + "pc", {'cpu': 'Core i5', 'ram': '8', 'ssd': '256', 'price': 1500})
 # print(response.json())
@@ -51,6 +54,10 @@ BASE = "http://127.0.0.1:5000/"
 # input()
 
 # response = requests.get(BASE + "pcs/3")
+# print(response.json())
+# input()
+
+# response = requests.delete(BASE + "pcs/3")
 # print(response.json())
 # input()
 
